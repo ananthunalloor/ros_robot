@@ -21,4 +21,7 @@ WORKDIR ${ROS_WS}
 RUN echo "source /opt/ros/${ROS_DISTRO}/setup.bash" >> /root/.bashrc && \
     echo "if [ -f ${ROS_WS}/install/setup.bash ]; then source ${ROS_WS}/install/setup.bash; fi" >> /root/.bashrc
 
+# can enable if display issue continues
+RUN echo "export DISPLAY=:0" >> /root/.bashrc
+
 CMD ["bash"]

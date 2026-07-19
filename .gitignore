@@ -4,6 +4,7 @@
 build/
 install/
 log/
+.env
 
 # ==========================================
 # Python Artifacts (if using ament_python)

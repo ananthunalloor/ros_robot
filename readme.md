@@ -1,5 +1,9 @@
 xhost +local:docker
 
+export UID=$(id -u)
+
+export GID=$(id -g)
+
 docker compose build
 
 docker compose up -d
@@ -19,3 +23,5 @@ source install/setup.bash
 ros2 run control control_node
 
 ros2 launch robot.launch.py
+
+ros2 launch ros_gz_sim gz_sim.launch.py gz_args:="empty.sdf"
