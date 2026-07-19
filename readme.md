@@ -16,4 +16,6 @@ colcon build
 
 source install/setup.bash
 
-ros2 run my_project_pkg my_node
+ros2 run control control_node
+
+ros2 launch robot.launch.py
