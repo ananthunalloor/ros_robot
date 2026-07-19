@@ -1,0 +1,21 @@
+services:
+  ros_robot:
+    build:
+      context: ./docker
+      dockerfile: Dockerfile
+    image: ros2-lyrical-gazebo:jetty
+    container_name: ros-robot-container
+    network_mode: host
+
+    environment:
+      - DISPLAY=${DISPLAY}
+      - QT_X11_NO_MITSHM=1
+      - ROS_DOMAIN_ID=0
+
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+      - ./ros_ws:/root/ros_ws
+
+    stdin_open: true
+    tty: true
+    command: bash
