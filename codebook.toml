@@ -1,5 +1,9 @@
 words = [
+    "MITSHM",
+    "chmod",
     "cmake",
+    "colcon",
     "ros",
+    "setuptools",
     "xhost",
 ]
