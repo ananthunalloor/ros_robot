@@ -13,8 +13,16 @@ services:
       - ROS_DOMAIN_ID=0
 
     volumes:
+      - /tmp/.docker.xauth:/tmp/.docker.xauth:rw
       - /tmp/.X11-unix:/tmp/.X11-unix:rw
       - ./ros_ws:/root/ros_ws
+      - ./dev_ws:/root/dev_ws
+      - ./.ros:/root/.ros
+      - "/dev:/dev"
+      - "/run/udev:/run/udev:ro"
+
+    devices:
+      - "/dev/bus/usb:/dev/bus/usb"
 
     stdin_open: true
     tty: true
