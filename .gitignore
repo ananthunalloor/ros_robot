@@ -17,6 +17,7 @@ log/
 .eggs/
 *.egg-info/
 dist/
+.ros
 
 # ==========================================
 # C++ / CMake Artifacts
