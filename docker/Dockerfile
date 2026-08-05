@@ -1,11 +1,14 @@
-FROM osrf/ros:lyrical-desktop-full
+# FROM osrf/ros:lyrical-desktop-full
+FROM osrf/ros:jazzy-desktop-full
 
-ENV ROS_DISTRO=lyrical
+# ENV ROS_DISTRO=lyrical
+ENV ROS_DISTRO=jazzy
 ENV DEBIAN_FRONTEND=noninteractive
 ENV ROS_WS=/root/ros_ws
 ENV DEV_WS=/root/dev_ws
+ENV MICRO_WS=/root/uros_ws
 
-# Gazebo Jetty (LTS) is the officially recommended sim for Lyrical Luth.
+# Gazebo Jetty (LTS) is the officially recommended sim
 # It's pulled in through the ros-gz vendor packages, not a separate Gazebo install.
 RUN apt-get update && apt-get install -y --no-install-recommends \
         ros-${ROS_DISTRO}-ros-gz \
@@ -15,19 +18,24 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         ros-${ROS_DISTRO}-teleop-twist-keyboard \
     && rm -rf /var/lib/apt/lists/*
 
-RUN mkdir -p ${DEV_WS}/src
-WORKDIR ${DEV_WS}
+RUN apt-get update && apt-get install -y --no-install-recommends \
+        clang-tidy \
+        flex \
+        net-tools \
+    && rm -rf /var/lib/apt/lists/*
 
-# Auto-source ROS and the workspace overlay in every interactive shell
+ # Create all workspaces
+RUN mkdir -p ${ROS_WS}/src \
+        ${DEV_WS}/src \
+        ${MICRO_WS}/src
+
+# Source workspaces
 RUN echo "source /opt/ros/${ROS_DISTRO}/setup.bash" >> /root/.bashrc && \
-    echo "if [ -f ${DEV_WS}/install/setup.bash ]; then source ${DEV_WS}/install/setup.bash; fi" >> /root/.bashrc
+        echo "if [ -f ${MICRO_WS}/install/local_setup.bash ]; then source ${MICRO_WS}/install/local_setup.bash; fi" >> /root/.bashrc && \
+        echo "if [ -f ${DEV_WS}/install/setup.bash ]; then source ${DEV_WS}/install/setup.bash; fi" >> /root/.bashrc && \
+        echo "if [ -f ${ROS_WS}/install/setup.bash ]; then source ${ROS_WS}/install/setup.bash; fi" >> /root/.bashrc
 
-RUN mkdir -p ${ROS_WS}/src
 WORKDIR ${ROS_WS}
-
-# Auto-source ROS and the workspace overlay in every interactive shell
-RUN echo "source /opt/ros/${ROS_DISTRO}/setup.bash" >> /root/.bashrc && \
-    echo "if [ -f ${ROS_WS}/install/setup.bash ]; then source ${ROS_WS}/install/setup.bash; fi" >> /root/.bashrc
 
 # can enable if display issue continues
 RUN echo "export DISPLAY=:0" >> /root/.bashrc

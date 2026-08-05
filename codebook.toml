@@ -1,9 +1,14 @@
+dictionaries = ["en_us"]
 words = [
     "MITSHM",
     "chmod",
     "cmake",
     "colcon",
+    "microros",
     "ros",
     "setuptools",
+    "udp",
     "xhost",
 ]
+flag_words = ["todo", "fixme"]
+ignore_paths = ["**/*.json", ".git/**/*"]

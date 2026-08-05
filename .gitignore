@@ -5,6 +5,7 @@ build/
 install/
 log/
 .env
+.ros
 
 # ==========================================
 # Python Artifacts (if using ament_python)
