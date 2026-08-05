@@ -31,5 +31,6 @@ ros2 topic echo /picow_publisher
 ros2 launch ros_gz_sim gz_sim.launch.py gz_args:="empty.sdf"
 ros2 run micro_ros_agent micro_ros_agent serial --dev /dev/ttyACM0 -b115200
 ros2 run micro_ros_agent micro_ros_agent udp4 --port 8888
+ros2 launch rosbridge_server rosbridge_websocket_launch.xml
 
 MAC Address: 32:BD:04:C1:CD:28

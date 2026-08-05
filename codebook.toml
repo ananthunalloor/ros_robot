@@ -6,9 +6,16 @@ words = [
     "colcon",
     "microros",
     "ros",
+    "rosbridge",
     "setuptools",
     "udp",
     "xhost",
 ]
-flag_words = ["todo", "fixme"]
-ignore_paths = ["**/*.json", ".git/**/*"]
+flag_words = [
+    "todo",
+    "fixme",
+]
+ignore_paths = [
+    "**/*.json",
+    ".git/**/*",
+]

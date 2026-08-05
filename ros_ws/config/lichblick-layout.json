@@ -1,0 +1,62 @@
+{
+  "configById": {
+    "RawMessagesVirtual!os6rgs": {
+      "diffEnabled": false,
+      "diffMethod": "custom",
+      "diffTopicPath": "",
+      "showFullMessageForDiff": false,
+      "topicPath": "/picow_publisher",
+      "expansion": "none"
+    },
+    "RosOut!40qerfh": {
+      "searchTerms": [],
+      "minLogLevel": 1
+    },
+    "Teleop!3rgp1k2": {
+      "topic": "/cmd_vel",
+      "publishRate": 1,
+      "upButton": {
+        "field": "linear-x",
+        "value": 1
+      },
+      "downButton": {
+        "field": "linear-x",
+        "value": -1
+      },
+      "leftButton": {
+        "field": "angular-z",
+        "value": 1
+      },
+      "rightButton": {
+        "field": "angular-z",
+        "value": -1
+      }
+    },
+    "RawMessages!87x33s": {
+      "diffEnabled": false,
+      "diffMethod": "custom",
+      "diffTopicPath": "",
+      "showFullMessageForDiff": false,
+      "topicPath": "/cmd_vel",
+      "expansion": "none"
+    }
+  },
+  "globalVariables": {},
+  "userNodes": {},
+  "playbackConfig": {
+    "speed": 1
+  },
+  "layout": {
+    "first": {
+      "first": "RawMessagesVirtual!os6rgs",
+      "second": "RosOut!40qerfh",
+      "direction": "column"
+    },
+    "second": {
+      "first": "RawMessages!87x33s",
+      "second": "Teleop!3rgp1k2",
+      "direction": "column"
+    },
+    "direction": "row"
+  }
+}
