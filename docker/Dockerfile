@@ -16,12 +16,16 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         ros-${ROS_DISTRO}-robot-state-publisher \
         ros-${ROS_DISTRO}-joint-state-publisher-gui \
         ros-${ROS_DISTRO}-teleop-twist-keyboard \
+        ros-${ROS_DISTRO}-rosbridge-suite \
+        ros-${ROS_DISTRO}-robot-upstart \
+        ros-${ROS_DISTRO}-rqt-robot-monitor \
     && rm -rf /var/lib/apt/lists/*
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
         clang-tidy \
         flex \
         net-tools \
+        iputils-ping \
     && rm -rf /var/lib/apt/lists/*
 
  # Create all workspaces
